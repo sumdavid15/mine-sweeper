@@ -25,11 +25,6 @@ body {
     user-select: none;
 }
 
-.cell:hover {
-    background-color: lightgray;
-    color: slategray;
-}
-
 .revealed {
     background-color: #C0C0C0;
     text-align: center;
