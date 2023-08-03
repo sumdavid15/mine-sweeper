@@ -43,7 +43,7 @@ function initGame() {
     gGame.shownCount = 0
     gGame.markedCount = 0
     gGame.secsPassed = 0
-    gGame.isMegaHint =false
+    gGame.isMegaHint = false
     gGame.safeClick = false
 
     gLevel.MINES = gMinesCount
@@ -254,6 +254,7 @@ function checkVictory() {
     if (nonMineCellCount === shownCellCount) {
         document.querySelector('.smiley').innerHTML = '😎'
         stopGame()
+        alert('GG')
     }
 }
 
