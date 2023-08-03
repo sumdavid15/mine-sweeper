@@ -43,7 +43,7 @@ function initGame() {
     gGame.shownCount = 0
     gGame.markedCount = 0
     gGame.secsPassed = 0
-    gGame.isMegaHint
+    gGame.isMegaHint =false
     gGame.safeClick = false
 
     gLevel.MINES = gMinesCount
