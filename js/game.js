@@ -83,6 +83,7 @@ function buildBoard() {
                 isMarked: false,
                 isFirstClick: false,
                 isSafe: false,
+                aroundFirstClick: false
             }
         }
     }
@@ -280,6 +281,7 @@ function firstClick(i, j) {
     gBoard[i][j].isShown = true
     gGame.shownCount++
 
+    setEmptyCellsAroundFirstClickF(i, j)
     addMines()
     setMinesNegsCount()
     savePrevMove(copyArrayOfArrays(gBoard), copyObject(gGame), copyObject(gLevel))
@@ -311,4 +313,3 @@ function startTimer() {
         if (gGame.secsPassed === 999) clearInterval(gTimerInterval)
     }, 1000);
 }
-
