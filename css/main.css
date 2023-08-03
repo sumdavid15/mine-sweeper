@@ -205,3 +205,13 @@ table {}
 .x8 {
     color: black
 }
+
+.author {
+    font-family: Calibri;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    padding: 20px;
+}
