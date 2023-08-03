@@ -8,20 +8,41 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body onload="initGame()">
+<body onload="initGame()" onmouseup="changeSmileyUp()">
     <div class="game-container">
         <div class="bar">
-            <div>Time: <span class="timer">0</span></div>
-            <div>Lifes: <span class="life">3</span></div>
-            <div onclick="" class="smiley">🙂</div>
-            <div>hints: 3</div>
-            <div>Mines: <span class="mines">0</span></div>
+            <div class="timer">🕓: <span>0</span></div>
+            <div onclick="initGame()" class="smiley"></div>
+            <div class="mines"><img src="img/mine.png"> <span> 0</span></div>
         </div>
-        <table class="board-container" onmousedown="changeSmileyDown()" onmouseup="changeSmileyUp()">
-            <tbody class="board"></tbody>
-        </table>
+        <div class="life"></div>
+        <div class="accessories">
+            <!-- <div class="popup"></div> -->
+            <div class="hint-btns">
+                <button class="btn hints-btn" onclick="onHintClick()">🔍 <span>3</span></button>
+                <button class="btn mega-btn" onclick="megaHint()">Mega Hit</button>
+                <button class="btn safe-btn" onclick="safeClick()">✅ <span>3</span></button>
+            </div>
+            <table class="board-container" onmousedown="changeSmileyDown()">
+                <tbody class="board"></tbody>
+            </table>
+            <div class="level-change">
+                <button class="btn" onclick="changeLevel(4,2)">Beginner</button>
+                <button class="btn" onclick="changeLevel(8,14)">Medium</button>
+                <button class="btn" onclick="changeLevel(12,32)">Expert</button>
+            </div>
+        </div>
+        <div class="helper">
+            <button class="btn undo-btn " onclick="undoGame()">Undo</button>
+        </div>
     </div>
+
     <script src="js/utils.js"></script>
+    <script src="js/safeClick.js"></script>
+    <script src="js/undo.js"></script>
+    <script src="js/hint.js"></script>
+    <script src="js/megaHit.js"></script>
+    <script src="js/mines.js"></script>
     <script src="js/game.js"></script>
 </body>
 

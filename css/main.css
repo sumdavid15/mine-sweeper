@@ -3,76 +3,213 @@ body {
     color: rgb(0, 0, 0);
     text-align: center;
     align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-size: 20px;
 }
 
 .board-container {
-    margin: auto;
+    margin: 0;
 }
 
 .cell {
+    position: relative;
     text-align: center;
     align-items: center;
-    font-size: 14px;
-    height: 3em;
-    width: 3em;
+    font-size: 20px;
+    font-weight: bold;
+    height: 35px;
+    width: 35px;
     background-color: #BFBFBF;
     color: black;
-    border-bottom: 2px solid #7B7B7B;
-    border-left: 2px solid #ffffff;
-    border-top: 2px solid #ffffff;
-    border-right: 2px solid #7B7B7B;
+    border: 4px outset rgb(247, 243, 243);
     box-sizing: border-box;
     user-select: none;
+    /* background-size: contain;
+    background-repeat: no-repeat; */
+}
+
+.cell img {
+    max-width: 90%;
+    max-height: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .revealed {
-    background-color: #C0C0C0;
+    background-color: #b3afaf;
+    border: 4px inset rgb(247, 243, 243);
     text-align: center;
     border: none;
 }
 
-img {
-    width: 1.5em;
-    height: 1.5em;
-}
-
-.marked {
-    background-image: url('/img/flag.png');
-}
-
-table {
-    /* border-collapse: separate; */
-    white-space: normal;
-    line-height: normal;
-    font-weight: normal;
-    font-size: medium;
-    font-style: normal;
-    color: -internal-quirk-inherit;
-    border-spacing: 1px;
-    font-variant: normal;
-    user-select: none;
-}
+table {}
 
 .board-container {
     background-color: #7B7B7B;
-    /* border-radius: 1px solid rgb(253, 253, 253); */
+}
+
+.mega-hit-mark {
+    background-color: rgb(14, 56, 222);
+}
+
+.safe-mark {
+    background-color: chartreuse;
 }
 
 .game-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background-color: #525050;
-    height: 300px;
     user-select: none;
+    /* height: 70vh; */
 }
 
 .bar {
-    background-color: #BFBFBF;
+    background-color: antiquewhite;
     ;
     display: flex;
     gap: 20px;
     align-items: center;
     justify-content: center;
+    text-align: center;
     padding: 10px;
+    position: relative;
+    text-align: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #BFBFBF;
+    color: black;
+    border: 4px outset rgb(247, 243, 243);
+    box-sizing: border-box;
+    user-select: none;
+    justify-content: space-around;
+}
+
+.timer {
+    padding: 5px;
+}
+
+.life {
+    padding: 5px;
+    display: block;
+    width: 100%;
+    height: 30px;
+}
+
+.smiley {
+    cursor: pointer;
+    background-color: #7B7B7B;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    background-color: #BFBFBF;
+    color: black;
+    border: 4px outset rgb(247, 243, 243);
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.hints {
+    padding: 5px;
+}
+
+.hide-btn {
+    pointer-events: none;
+    opacity: 0;
+}
+
+.mines {
+    display: flex;
+    padding: 5px;
+    text-align: center;
+    align-items: center;
+}
+
+.btn {
+    border-radius: 5px;
+    cursor: pointer;
+    cursor: pointer;
+    background-color: #7B7B7B;
+    align-items: center;
+    background-color: #BFBFBF;
+    color: black;
+    border: 4px outset rgb(247, 243, 243);
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.mines img {
+    height: 20px;
+}
+
+.accessories {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.helper {
+    display: flex;
+    gap: 70px;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    /* visibility: hidden; */
+    /* pointer-events: none; */
+
+}
+
+.hint-btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    /* display: none; */
+    /* pointer-events: none; */
+}
+
+.level-change {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+
+}
+
+.x1 {
+    color: blue;
+}
+
+.x2 {
+    color: green
+}
+
+.x3 {
+    color: red
+}
+
+.x4 {
+    color: darkblue
+}
+
+.x5 {
+    color: brown
+}
+
+.x6 {
+    color: greenyellow
+}
+
+.x7 {
+    color: cadetblue
+}
+
+.x8 {
+    color: black
 }
