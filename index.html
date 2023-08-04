@@ -7,22 +7,22 @@
     <title>MineSweeper</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/dark-mode.css">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body onload="initGame()" onmouseup="changeSmileyUp()">
     <div class="game-container">
         <div class="bar">
-            <!-- <div class="dark-mode-toggle">
+            <div class="dark-mode-toggle">
                 <input type="checkbox" class="checkbox" id="checkbox" onclick="toggleDarkMode()">
                 <label for="checkbox" class="checkbox-label">
                     <i class="fas fa-moon"></i>
                     <i class="fas fa-sun"></i>
                     <span class="ball"></span>
                 </label>
-            </div> -->
+            </div>
             <div class="timer">🕓: <span>0</span></div>
             <div onclick="initGame()" class="smiley"></div>
             <div class="mines"><img src="img/mine.png"> <span> 0</span></div>
@@ -42,10 +42,11 @@
                 <button class="btn" onclick="changeLevel(4,2)">Beginner</button>
                 <button class="btn" onclick="changeLevel(8,14)">Medium</button>
                 <button class="btn" onclick="changeLevel(12,32)">Expert</button>
+                <button class="btn active-manual" onclick="activateManual()">Place Mines</button>
             </div>
         </div>
         <div class="helper">
-            <button class="btn undo-btn " onclick="undoGame()">Undo</button>
+            <button class="btn undo-btn" onclick="undoGame()">Undo</button>
         </div>
     </div>
     <div class="author">David Tadevosian</div>
@@ -58,6 +59,7 @@
     <script src="js/exterminator.js"></script>
     <script src="js/mines.js"></script>
     <script src="js/localStorage.js"></script>
+    <script src="js/manuallycreate.js"></script>
     <script src="js/game.js"></script>
 </body>
 

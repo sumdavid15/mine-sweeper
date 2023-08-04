@@ -9,6 +9,7 @@ let gPrevMove = []
 
 let gFirstCell = null
 let gSecondCell = null
+let gManualCreate;
 
 const gLevel = {
     SIZE: 4,
@@ -28,7 +29,8 @@ const gGame = {
     gameIsOver: false,
     safeClick: false,
     isMegaHint: false,
-    isExterminated: false
+    isExterminated: false,
+    isManual: false,
 }
 
 function initGame() {
@@ -39,7 +41,7 @@ function initGame() {
     clearTimeout(gHintTimeOut)
     clearTimeout(gSafeTimeOut)
 
-    gGame.isOn = true
+    gGame.isOn = false
     gGame.gameIsOver = false
     gGame.shownCount = 0
     gGame.markedCount = 0
@@ -47,6 +49,7 @@ function initGame() {
     gGame.isMegaHint = false
     gGame.safeClick = false
     gGame.isExterminated = false
+    gGame.isManual = false
 
     gLevel.MINES = gMinesCount
     gLevel.LIFE = 3
@@ -54,6 +57,7 @@ function initGame() {
     gLevel.SAFE_CLICKS = 3
     gLevel.MEGA_HINT = false
 
+    gManualCreate = gMinesCount
     gFirstCell = null
     gSecondCell = null
 
@@ -65,12 +69,7 @@ function initGame() {
     document.querySelector('.timer span').innerHTML = gGame.secsPassed
     document.querySelector('.smiley').innerHTML = '🙂'
 
-
-    document.querySelector('.undo-btn').classList.add('hide-btn')
-    document.querySelector('.mega-btn').classList.add('hide-btn')
-    document.querySelector('.hints-btn').classList.add('hide-btn')
-    document.querySelector('.safe-btn').classList.add('hide-btn')
-    document.querySelector('.exterminator-btn').classList.add('hide-btn')
+    hideButtons()
     gPrevMove = []
 }
 
@@ -145,9 +144,29 @@ function onCellClicked(elCell, i, j) {
         return
     }
 
-    if (!gGame.isOn) return
+    if (gGame.isManual && !gGame.isOn) {
+        if (gManualCreate) {
+            createManualMines(i, j)
+            gManualCreate--
+            document.querySelector('.mines span').innerHTML = gManualCreate
+            if (!gManualCreate) {
+                hideCreatedManualMines()
+                setMinesNegsCount()
+                startTimer()
+                renderBoard(gBoard)
+                savePrevMove(copyArrayOfArrays(gBoard), copyObject(gGame), copyObject(gLevel))
+                document.querySelector('.mines span').innerHTML = gLevel.MINES
+                gGame.isOn = true
+            }
+        }
+        return
+    }
 
     if (!gGame.shownCount) {
+        showButtons()
+    }
+
+    if (!gGame.shownCount && !gGame.isOn) {
         firstClick(i, j)
         startTimer()
         expandShown(gBoard, i, j)
@@ -157,14 +176,17 @@ function onCellClicked(elCell, i, j) {
         return
     }
 
+
+    const currCell = gBoard[i][j]
+
+    if (!gGame.isOn) return
+    if (currCell.isShown) return
+    if (currCell.isMarked) return
+
     if (gGame.hint) {
         hintForNextMove(i, j)
         return
     }
-
-    const currCell = gBoard[i][j]
-
-    if (currCell.isShown) return
 
     if (currCell.isSafe) {
         clearTimeout(gSafeTimeOut)
@@ -177,7 +199,6 @@ function onCellClicked(elCell, i, j) {
         expandShown(gBoard, i, j)
         gGame.shownCount++
     }
-    if (currCell.isMarked) return
 
     if (currCell.isMine) {
         onMineClick(elCell)
@@ -259,6 +280,8 @@ function checkVictory() {
         stopGame()
         alert('GG')
     }
+    console.log('shownCellCount:', shownCellCount)
+    console.log('nonMineCellCount:', nonMineCellCount)
 }
 
 function checkGameOver() {
@@ -275,12 +298,6 @@ function stopGame() {
 }
 
 function firstClick(i, j) {
-    document.querySelector('.mega-btn').classList.remove('hide-btn')
-    document.querySelector('.hints-btn').classList.remove('hide-btn')
-    document.querySelector('.undo-btn').classList.remove('hide-btn')
-    document.querySelector('.safe-btn').classList.remove('hide-btn')
-    document.querySelector('.exterminator-btn').classList.remove('hide-btn')
-
     gGame.isOn = true
     gBoard[i][j].isFirstClick = true
     gBoard[i][j].isShown = true
@@ -317,4 +334,21 @@ function startTimer() {
         document.querySelector('.timer span').innerHTML = gGame.secsPassed;
         if (gGame.secsPassed === 999) clearInterval(gTimerInterval)
     }, 1000);
+}
+
+
+function showButtons() {
+    document.querySelector('.mega-btn').classList.remove('hide-btn')
+    document.querySelector('.hints-btn').classList.remove('hide-btn')
+    document.querySelector('.undo-btn').classList.remove('hide-btn')
+    document.querySelector('.safe-btn').classList.remove('hide-btn')
+    document.querySelector('.exterminator-btn').classList.remove('hide-btn')
+}
+
+function hideButtons() {
+    document.querySelector('.undo-btn').classList.add('hide-btn')
+    document.querySelector('.mega-btn').classList.add('hide-btn')
+    document.querySelector('.hints-btn').classList.add('hide-btn')
+    document.querySelector('.safe-btn').classList.add('hide-btn')
+    document.querySelector('.exterminator-btn').classList.add('hide-btn')
 }

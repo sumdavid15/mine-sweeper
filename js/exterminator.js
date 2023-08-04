@@ -43,8 +43,3 @@ function getMines() {
 function toggleDarkMode() {
     document.body.classList.toggle("dark-theme")
 }
-
-const checkbox = document.getElementById("checkbox")
-checkbox.addEventListener("change", () => {
-    document.body.classList.toggle("dark")
-})
