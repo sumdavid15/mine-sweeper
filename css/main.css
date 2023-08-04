@@ -109,6 +109,11 @@ body {
     border: 4px outset rgb(247, 243, 243);
     box-sizing: border-box;
     user-select: none;
+    transition: transform 0.2s;
+}
+
+.smiley:active {
+    transform: translateY(2px);
 }
 
 .hints {
@@ -138,6 +143,11 @@ body {
     border: 4px outset rgb(247, 243, 243);
     box-sizing: border-box;
     user-select: none;
+    transition: transform 0.2s;
+}
+
+.btn:active {
+    transform: translateY(2px);
 }
 
 .mines img {
