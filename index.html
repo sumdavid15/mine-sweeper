@@ -6,11 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MineSweeper</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
 </head>
 
 <body onload="initGame()" onmouseup="changeSmileyUp()">
     <div class="game-container">
         <div class="bar">
+            <!-- <div class="dark-mode-toggle">
+                <input type="checkbox" class="checkbox" id="checkbox" onclick="toggleDarkMode()">
+                <label for="checkbox" class="checkbox-label">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                    <span class="ball"></span>
+                </label>
+            </div> -->
             <div class="timer">🕓: <span>0</span></div>
             <div onclick="initGame()" class="smiley"></div>
             <div class="mines"><img src="img/mine.png"> <span> 0</span></div>
@@ -21,6 +33,7 @@
                 <button class="btn hints-btn" onclick="onHintClick()">🔍 <span>3</span></button>
                 <button class="btn mega-btn" onclick="megaHint()">Mega Hint</button>
                 <button class="btn safe-btn" onclick="safeClick()">✅ <span>3</span></button>
+                <button class="btn exterminator-btn " onclick="exterminator()">Exterminator</button>
             </div>
             <table class="board-container" onmousedown="changeSmileyDown()">
                 <tbody class="board"></tbody>
@@ -42,6 +55,7 @@
     <script src="js/undo.js"></script>
     <script src="js/hint.js"></script>
     <script src="js/megaHit.js"></script>
+    <script src="js/exterminator.js"></script>
     <script src="js/mines.js"></script>
     <script src="js/localStorage.js"></script>
     <script src="js/game.js"></script>

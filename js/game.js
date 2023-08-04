@@ -28,6 +28,7 @@ const gGame = {
     gameIsOver: false,
     safeClick: false,
     isMegaHint: false,
+    isExterminated: false
 }
 
 function initGame() {
@@ -45,6 +46,7 @@ function initGame() {
     gGame.secsPassed = 0
     gGame.isMegaHint = false
     gGame.safeClick = false
+    gGame.isExterminated = false
 
     gLevel.MINES = gMinesCount
     gLevel.LIFE = 3
@@ -68,6 +70,7 @@ function initGame() {
     document.querySelector('.mega-btn').classList.add('hide-btn')
     document.querySelector('.hints-btn').classList.add('hide-btn')
     document.querySelector('.safe-btn').classList.add('hide-btn')
+    document.querySelector('.exterminator-btn').classList.add('hide-btn')
     gPrevMove = []
 }
 
@@ -276,6 +279,7 @@ function firstClick(i, j) {
     document.querySelector('.hints-btn').classList.remove('hide-btn')
     document.querySelector('.undo-btn').classList.remove('hide-btn')
     document.querySelector('.safe-btn').classList.remove('hide-btn')
+    document.querySelector('.exterminator-btn').classList.remove('hide-btn')
 
     gGame.isOn = true
     gBoard[i][j].isFirstClick = true
