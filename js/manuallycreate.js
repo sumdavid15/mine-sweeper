@@ -2,6 +2,7 @@
 function activateManual() {
     if (gGame.isManual) return
     if (gGame.isOn) return
+    initGame()
     gGame.isManual = true
     gGame.isOn = false
 }
