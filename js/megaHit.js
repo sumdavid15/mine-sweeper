@@ -1,5 +1,6 @@
 
 function megaHint() {
+    if (gLevel.MEGA_HINT) return
     if (gGame.isMegaHint) return
     if (!gGame.isOn) return
     gGame.isMegaHint = true
