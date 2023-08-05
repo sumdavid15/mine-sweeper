@@ -2,7 +2,7 @@
 function megaHint() {
     if (gLevel.MEGA_HINT) return
     if (gGame.isMegaHint) return
-    if (gGame.gameIsOver) return
+    if (!gGame.isOn) return
     gGame.isMegaHint = true
     gGame.isOn = false
 }
