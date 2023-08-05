@@ -282,7 +282,7 @@ function checkVictory() {
     if (nonMineCellCount === shownCellCount) {
         document.querySelector('.smiley').innerHTML = '😎'
 
-        if (!gGame.gameIsOver) {
+        if (!gGame.gameIsOver && !gGame.isManual) {
             gameScores.push({
                 player: prompt('GG write your name to save the score'),
                 level: difficulty,
