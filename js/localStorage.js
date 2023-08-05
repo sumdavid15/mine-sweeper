@@ -1,5 +1,23 @@
 
-let gameScores;
+let gameScores = [{
+    player: 'Puki',
+    level: 'Beginner',
+    time: 1,
+}, {
+    player: 'Muki',
+    level: 'Beginner',
+    time: 2,
+}, {
+    player: 'Lolo',
+    level: 'Medium',
+    time: 42,
+}, {
+    player: 'Moshe',
+    level: 'Expert',
+    time: 59,
+}]
+
+setItemLocalStorage(getDataFromLocal('game-scores') || gameScores)
 
 function getDataFromLocal(data) {
     return JSON.parse(localStorage.getItem(data))
