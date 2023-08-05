@@ -289,11 +289,11 @@ function checkGameOver() {
     document.querySelector('.smiley').innerHTML = '😖'
     stopGame()
     renderRemainingMines()
-    gGame.gameIsOver = true
 }
 
 function stopGame() {
     clearInterval(gTimerInterval)
+    gGame.gameIsOver = true
     gGame.isOn = false
 }
 
