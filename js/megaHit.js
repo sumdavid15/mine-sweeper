@@ -24,4 +24,4 @@ function revealArea(rowIdxStart, rowIdxEnd, colIdxStart, colIdxEnd) {
 
 const megaHintBtn = document.querySelector('.mega-btn');
 megaHintBtn.setAttribute('title',
-    'Mega-Hint works only once every game. It is used to reveal an area of the board for 2 seconds by clicking top left corner than right corner')
+    'Mega-Hint works only once every game. It is used to reveal an area of the board for 2 seconds by clicking top left corner than bottom right corner')

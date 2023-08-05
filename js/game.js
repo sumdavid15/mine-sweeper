@@ -6,6 +6,7 @@ let gSafeTimeOut;
 let gHintTimeOut;
 let gMinesCount = 2
 let gPrevMove = []
+let difficulty = 'Beginner'
 
 let gFirstCell = null
 let gSecondCell = null
@@ -71,6 +72,8 @@ function initGame() {
 
     hideButtons()
     gPrevMove = []
+    gameScores = getDataFromLocal('game-scores') || []
+    updateScoreBoard()
 }
 
 function buildBoard() {
@@ -258,9 +261,10 @@ function expandShown(board, rowIdx, colIdx) {
     }
 }
 
-function changeLevel(size, mine) {
+function changeLevel(size, mine, el) {
     gLevel.SIZE = size
     gMinesCount = mine
+    difficulty = el.innerHTML
     initGame()
 }
 
@@ -277,11 +281,18 @@ function checkVictory() {
     }
     if (nonMineCellCount === shownCellCount) {
         document.querySelector('.smiley').innerHTML = '😎'
+
+        if (!gGame.gameIsOver) {
+            gameScores.push({
+                player: prompt('GG write your name to save the score'),
+                level: difficulty,
+                time: gGame.secsPassed,
+            })
+            setItemLocalStorage(gameScores)
+            updateScoreBoard()
+        }
         stopGame()
-        alert('GG')
     }
-    console.log('shownCellCount:', shownCellCount)
-    console.log('nonMineCellCount:', nonMineCellCount)
 }
 
 function checkGameOver() {

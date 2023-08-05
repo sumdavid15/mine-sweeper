@@ -39,14 +39,28 @@
                 <tbody class="board"></tbody>
             </table>
             <div class="level-change">
-                <button class="btn" onclick="changeLevel(4,2)">Beginner</button>
-                <button class="btn" onclick="changeLevel(8,14)">Medium</button>
-                <button class="btn" onclick="changeLevel(12,32)">Expert</button>
+                <button class="btn" onclick="changeLevel(4,2,this)">Beginner</button>
+                <button class="btn" onclick="changeLevel(8,14,this)">Medium</button>
+                <button class="btn" onclick="changeLevel(12,32,this)">Expert</button>
                 <button class="btn active-manual" onclick="activateManual()">Place Mines</button>
             </div>
         </div>
         <div class="helper">
             <button class="btn undo-btn" onclick="undoGame()">Undo</button>
+        </div>
+    </div>
+    <div class="game-score">
+        <div class="beginner">Beginner
+            <ol class="list">
+            </ol>
+        </div>
+        <div class="medium">Medium
+            <ol class="list">
+            </ol>
+        </div>
+        <div class="expert">Expert
+            <ol class="list">
+            </ol>
         </div>
     </div>
     <div class="author">David Tadevosian</div>

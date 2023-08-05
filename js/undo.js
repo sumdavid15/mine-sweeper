@@ -3,7 +3,6 @@ function undoGame() {
     gPrevMove.pop()
     clearTimeout(gSafeTimeOut)
     clearTimeout(gHintTimeOut)
-
     gGame.safeClick = false
 
     const [board, game, level] = gPrevMove[gPrevMove.length - 1]
@@ -17,10 +16,9 @@ function undoGame() {
     gGame.shownCount = game.shownCount
     gGame.markedCount = game.markedCount
 
-    if (gGame.gameIsOver) {
+    if (gGame.isOn) {
         document.querySelector('.smiley').innerHTML = '😃'
         startTimer()
-        gGame.gameIsOver = false
     }
     document.querySelector('.mines span').innerHTML = gLevel.MINES
     document.querySelector('.life').innerHTML = '💖'.repeat(gLevel.LIFE)

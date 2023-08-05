@@ -3,6 +3,7 @@ function activateManual() {
     if (gGame.isManual) return
     if (gGame.isOn) return
     initGame()
+    difficulty = 'Manually'
     gGame.isManual = true
     gGame.isOn = false
 }

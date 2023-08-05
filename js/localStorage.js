@@ -1,12 +1,56 @@
-// const [level, time, mines] = localStorage.getItem("game-score").split(',');
 
-// document.querySelector(".popup .size span").innerHTML = level
-// document.querySelector(".popup .time span").innerHTML = time
-// document.querySelector(".popup .mine-left span").innerHTML = mines
+let gameScores;
 
-// if (!gGame.scoreSaved) {
-//     localStorage.setItem("game-score", [gLevel.SIZE, gGame.secsPassed, gLevel.MINES])
-//     gGame.scoreSaved = true
-// }
+function getDataFromLocal(data) {
+    return JSON.parse(localStorage.getItem(data))
+}
 
-// scoreSaved: false,
+function setItemLocalStorage(item) {
+    localStorage.setItem('game-scores', JSON.stringify(item))
+}
+
+function getScores() {
+    const beginner = []
+    const medium = []
+    const expert = []
+
+    gameScores.forEach(score => {
+        if (score.level === 'Beginner') beginner.push(score)
+        if (score.level === 'Medium') medium.push(score)
+        if (score.level === 'Expert') expert.push(score)
+    });
+
+    return [beginner, medium, expert]
+}
+
+function updateScoreBoard() {
+    const [beginner, medium, expert] = getScores()
+
+    const elBeginnerOl = document.querySelector('.beginner ol')
+    const elMediumOl = document.querySelector('.medium ol')
+    const elExpertOl = document.querySelector('.expert ol')
+
+    elBeginnerOl.innerHTML = ''
+    elMediumOl.innerHTML = ''
+    elExpertOl.innerHTML = ''
+
+    beginner.sort((a, b) => a.time - b.time)
+    medium.sort((a, b) => a.time - b.time)
+    expert.sort((a, b) => a.time - b.time)
+
+    renderScoreBoard(beginner, elBeginnerOl)
+    renderScoreBoard(medium, elMediumOl)
+    renderScoreBoard(expert, elExpertOl)
+}
+
+function renderScoreBoard(scores, el) {
+    scores.slice(0, 10).forEach(score => {
+        el.appendChild(createEl(score.player, score.time))
+    })
+}
+
+function createEl(player, time) {
+    const elLi = document.createElement('li')
+    elLi.innerText = `${player || 'player'} : ${time}`
+    return elLi
+}
